@@ -1,15 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"nym/app"
+
+	"github.com/b9o2/tabby"
 )
 
 func main() {
-	s := "gopher"
-	fmt.Printf("Hello and welcome, %s!\n", s)
 
-	for i := 1; i <= 5; i++ {
+	ListVersion := app.NewListCommand()
+	UseVersion := app.NewUseCommand()
+	InitCommand := app.NewInitCommand()
+	RootCommand := app.NewRootCommand(ListVersion, UseVersion, InitCommand)
 
-		fmt.Println("i =", 100/i)
-	}
+	tabbyApp := tabby.NewTabby("nym", RootCommand)
+	tabbyApp.Run(nil)
 }
