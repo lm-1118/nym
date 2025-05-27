@@ -11,7 +11,8 @@ func main() {
 	ListVersion := app.NewListCommand()
 	UseVersion := app.NewUseCommand()
 	InitCommand := app.NewInitCommand()
-	RootCommand := app.NewRootCommand(ListVersion, UseVersion, InitCommand)
+	InstallCommand := app.NewInstallCommand()
+	RootCommand := app.NewRootCommand(ListVersion, UseVersion, InitCommand, InstallCommand)
 
 	tabbyApp := tabby.NewTabby("nym", RootCommand)
 	tabbyApp.Run(nil)
